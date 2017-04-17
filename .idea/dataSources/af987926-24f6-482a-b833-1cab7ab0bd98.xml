@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="staff@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="staff">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bond"/>
+    <schema id="4" parent="1" name="cars"/>
+    <schema id="5" parent="1" name="development"/>
+    <schema id="6" parent="1" name="information_schema"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="sakila"/>
+    <schema id="10" parent="1" name="shop"/>
+    <schema id="11" parent="1" name="stockbd"/>
+    <schema id="12" parent="1" name="sys"/>
+    <schema id="13" parent="1" name="world"/>
+    <table id="14" parent="2" name="employee"/>
+    <table id="15" parent="2" name="employeepost"/>
+    <table id="16" parent="2" name="order"/>
+    <table id="17" parent="2" name="post"/>
+    <table id="18" parent="2" name="typeorder"/>
+    <table id="19" parent="2" name="user"/>
+    <column id="20" parent="14" name="id_employee">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="22" parent="14" name="surname">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="23" parent="14" name="patronicname">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="24" parent="14" name="dateOfBirh">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="25" parent="14" name="placeOfBirth">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="26" parent="14" name="sex">
+      <Position>7</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="27" parent="14" name="number_passport">
+      <Position>8</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="28" parent="14" name="date_passport">
+      <Position>9</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="29" parent="14" name="insurance">
+      <Position>10</Position>
+      <DataType>varchar(35)|0</DataType>
+    </column>
+    <column id="30" parent="14" name="adress">
+      <Position>11</Position>
+      <DataType>varchar(95)|0</DataType>
+    </column>
+    <column id="31" parent="14" name="phone">
+      <Position>12</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <index id="32" parent="14" name="insurance_UNIQUE">
+      <ColNames>insurance</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="14" name="PRIMARY">
+      <ColNames>id_employee</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="34" parent="14" name="insurance_UNIQUE">
+      <ColNames>insurance</ColNames>
+      <UnderlyingIndexName>insurance_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="35" parent="15" name="id_employeePost">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="15" name="id_employee">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="15" name="id_post">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="15" name="id_order">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="15" name="date_Begin">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="15" name="date_End">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="41" parent="15" name="fk_employee_employeepost_idx">
+      <ColNames>id_employee</ColNames>
+    </index>
+    <index id="42" parent="15" name="fk_order_employeepost_idx">
+      <ColNames>id_order</ColNames>
+    </index>
+    <index id="43" parent="15" name="fk_post_employeepost_idx">
+      <ColNames>id_post</ColNames>
+    </index>
+    <key id="44" parent="15" name="PRIMARY">
+      <ColNames>id_employeePost</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="15" name="fk_employee_employeepost">
+      <ColNames>id_employee</ColNames>
+      <RefSchemaName>staff</RefSchemaName>
+      <RefTableName>employee</RefTableName>
+      <RefColNames>id_employee</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="46" parent="15" name="fk_post_employeepost">
+      <ColNames>id_post</ColNames>
+      <RefSchemaName>staff</RefSchemaName>
+      <RefTableName>post</RefTableName>
+      <RefColNames>id_post</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="47" parent="15" name="fk_order_employeepost">
+      <ColNames>id_order</ColNames>
+      <RefSchemaName>staff</RefSchemaName>
+      <RefTableName>order</RefTableName>
+      <RefColNames>id_order</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="48" parent="16" name="id_order">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="49" parent="16" name="date_order">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="16" name="number_order">
+      <Position>3</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="16" name="text_order">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="16" name="id_typeOrder">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="16" name="id_employee">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="54" parent="16" name="fk_employee_order_idx">
+      <ColNames>id_employee</ColNames>
+    </index>
+    <index id="55" parent="16" name="fk_typeOrder_order_idx">
+      <ColNames>id_typeOrder</ColNames>
+    </index>
+    <key id="56" parent="16" name="PRIMARY">
+      <ColNames>id_order</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="57" parent="16" name="fk_typeOrder_order">
+      <ColNames>id_typeOrder</ColNames>
+      <RefSchemaName>staff</RefSchemaName>
+      <RefTableName>typeorder</RefTableName>
+      <RefColNames>id_typeOrder</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="58" parent="16" name="fk_employee_order">
+      <ColNames>id_employee</ColNames>
+      <RefSchemaName>staff</RefSchemaName>
+      <RefTableName>employee</RefTableName>
+      <RefColNames>id_employee</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="59" parent="17" name="id_post">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="17" name="name_post">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="61" parent="17" name="name_post_UNIQUE">
+      <ColNames>name_post</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="62" parent="17" name="PRIMARY">
+      <ColNames>id_post</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="63" parent="17" name="name_post_UNIQUE">
+      <ColNames>name_post</ColNames>
+      <UnderlyingIndexName>name_post_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="64" parent="18" name="id_typeOrder">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="65" parent="18" name="name_typeOrder">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="66" parent="18" name="PRIMARY">
+      <ColNames>id_typeOrder</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="19" name="id_user">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="19" name="login">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="19" name="password">
+      <Position>3</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="70" parent="19" name="PRIMARY">
+      <ColNames>id_user</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

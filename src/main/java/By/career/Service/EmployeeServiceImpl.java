@@ -51,6 +51,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
+    public List<Employee> getEmployeeBySurname(String surname) {
+
+        return this.employeeDao.getEmployeeBySurname(surname);
+    }
+
+    @Override
+    @Transactional
     public List<Employee> listEmployee() {
         return this.employeeDao.listEmployee();
     }

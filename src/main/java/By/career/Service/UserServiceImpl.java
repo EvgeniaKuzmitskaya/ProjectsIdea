@@ -3,18 +3,24 @@ package By.career.Service;
 import By.career.Dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Evgenia on 16.04.2017.
  */
 
-@Service("UserService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
 
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
+    @Transactional
     public boolean checkLogin(String login, String password) {
 
         return userDao.checkLogin(login, password);

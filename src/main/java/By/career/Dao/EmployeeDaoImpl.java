@@ -2,6 +2,7 @@ package By.career.Dao;
 
 
 import By.career.Model.Employee;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -55,6 +56,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
         Employee employee = (Employee) session.load(Employee.class, new Integer(id));
         logger.info("Employee succesfully loaded. Details: " + employee);
         return employee;
+    }
+
+    @Override
+    public List<Employee> getEmployeeBySurname(String surname) {
+        Session session = this.sessionFactory.getCurrentSession();
+        String sql = "from Employee where surname= :surname";
+        Query query = session.createQuery(sql);
+        query.setParameter("surname", surname);
+        List results = query.list();
+        return results;
     }
 
     @SuppressWarnings("unchecked")

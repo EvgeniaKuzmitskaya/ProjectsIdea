@@ -16,6 +16,7 @@ public class Order {
 
     @Id
     @Column(name = "id_order", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getIdOrder() {
         return idOrder;
     }

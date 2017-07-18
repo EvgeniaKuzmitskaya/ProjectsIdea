@@ -14,17 +14,15 @@ import java.util.List;
  * Created by Evgenia on 16.04.2017.
  */
 
-@Repository("UserDao")
+@Repository("userDao")
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
-
-//    @Resource(name="sessionFactory")
     protected SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
+
         this.sessionFactory = sessionFactory;
     }
-
 
     @Override
     public boolean checkLogin(String login, String password) {
@@ -40,7 +38,6 @@ public class UserDaoImpl implements UserDao {
             userFound= true;
         }
 
-        session.close();
         logger.info("User authorized. Details: " + userFound);
         return userFound;
     }

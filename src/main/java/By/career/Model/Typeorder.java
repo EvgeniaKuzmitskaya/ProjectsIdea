@@ -1,9 +1,6 @@
 package By.career.Model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Evgenia on 15.04.2017.
@@ -15,6 +12,7 @@ public class Typeorder {
 
     @Id
     @Column(name = "id_typeOrder", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getIdTypeOrder() {
         return idTypeOrder;
     }

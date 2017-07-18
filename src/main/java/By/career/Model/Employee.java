@@ -1,8 +1,6 @@
 package By.career.Model;
-
 import javax.persistence.*;
 import java.sql.Date;
-
 /**
  * Created by Evgenia on 15.04.2017.
  */
@@ -24,7 +22,7 @@ public class Employee {
 
     @Id
     @Column(name = "id_employee", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getIdEmployee() {
         return idEmployee;
     }

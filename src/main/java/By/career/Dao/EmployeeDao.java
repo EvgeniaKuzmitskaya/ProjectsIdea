@@ -13,6 +13,7 @@ public interface EmployeeDao {
     public void updateEmployee(Employee employee);
     public void removeEmployee(int id);
     public Employee getEmployeeById(int id);
+    public List<Employee> getEmployeeBySurname(String surname);
     public List<Employee> listEmployee();
 
 }

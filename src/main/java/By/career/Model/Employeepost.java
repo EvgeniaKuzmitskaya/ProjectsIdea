@@ -7,6 +7,7 @@ import java.sql.Date;
  * Created by Evgenia on 15.04.2017.
  */
 @Entity
+@Table(name = "employeepost", schema = "staff")
 public class Employeepost {
     private int idEmployeePost;
     private Date dateBegin;
@@ -15,6 +16,7 @@ public class Employeepost {
 
     @Id
     @Column(name = "id_employeePost", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getIdEmployeePost() {
         return idEmployeePost;
     }
@@ -41,6 +43,16 @@ public class Employeepost {
 
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
+    }
+
+    @Override
+    public String toString() {
+        return "Employeepost{" +
+                "idEmployeePost=" + idEmployeePost +
+                ", dateBegin=" + dateBegin +
+                ", dateEnd=" + dateEnd +
+                ", employeeByIdEmployee=" + employeeByIdEmployee +
+                '}';
     }
 
     @Override

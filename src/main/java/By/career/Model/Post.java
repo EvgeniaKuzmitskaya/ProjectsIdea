@@ -1,20 +1,19 @@
 package By.career.Model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Evgenia on 15.04.2017.
  */
 @Entity
+@Table(name = "post", schema = "staff")
 public class Post {
     private int idPost;
     private String namePost;
 
     @Id
     @Column(name = "id_post", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getIdPost() {
         return idPost;
     }
@@ -31,6 +30,14 @@ public class Post {
 
     public void setNamePost(String namePost) {
         this.namePost = namePost;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "idPost=" + idPost +
+                ", namePost='" + namePost + '\'' +
+                '}';
     }
 
     @Override

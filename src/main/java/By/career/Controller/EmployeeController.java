@@ -3,14 +3,12 @@ package By.career.Controller;
 import By.career.Model.Employee;
 import By.career.Service.EmployeeService;
 
+import By.career.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -31,6 +29,13 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String showIndex(Model model){
+
+        return "index";
+    }
+
+
     @RequestMapping(value = "/employeeAdd", method = RequestMethod.POST)
     public String add(@ModelAttribute("empl") Employee employee){
         if(employee.getIdEmployee()==0){
@@ -41,6 +46,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employeeAdd", method = RequestMethod.GET)
     public String addEmployees(@ModelAttribute ("empl") Employee employee){
+
         return "employeeAdd";
     }
 
@@ -59,6 +65,13 @@ public class EmployeeController {
         return "employeeList";
     }
 
+    @RequestMapping (value = "/employeeSearch", method = RequestMethod.GET)
+    public String searchEmployee(@RequestParam("surname") String surname, Model model){
+        model.addAttribute("listEmployees", employeeService.getEmployeeBySurname(surname));
+        return "employeeList";
+//                new ModelAndView("emloyeeList", "listEmployees", listEmployees);
+    }
+
 
     @RequestMapping("/edit/{id}")
     public String editEmployee(@PathVariable("id") int id, Model model){
@@ -69,6 +82,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String edit(Employee employee){
+        System.out.println("edit employee id="+employee.getIdEmployee());
         this.employeeService.updateEmployee(employee);
         return "redirect:/employeeList";
     }
@@ -79,13 +93,11 @@ public class EmployeeController {
         return "redirect: /employeeList";
     }
 
-
-
-    @RequestMapping("/employeeData/{id}")
-    public String employeeData(@PathVariable ("id") int id, Model model){
-        model.addAttribute("employee", this.employeeService.getEmployeeById(id));
-        return "employeeView";
-    }
+//    @RequestMapping("/employeeData/{id}")
+//    public String employeeData(@PathVariable ("id") int id, Model model){
+//        model.addAttribute("employee", this.employeeService.getEmployeeById(id));
+//        return "employeeView";
+//    }
 
 
 
